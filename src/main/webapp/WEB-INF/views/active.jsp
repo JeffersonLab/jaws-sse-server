@@ -8,6 +8,7 @@
 <t:page title="${title}">  
     <jsp:attribute name="stylesheets">
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/v${initParam.releaseNumber}/css/active.css"/>
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/v${initParam.releaseNumber}/css/notifications.css"/>
     </jsp:attribute>
     <jsp:attribute name="scripts">
         <script>
@@ -52,6 +53,8 @@
         </script>
         <script type="text/javascript"
                 src="${pageContext.request.contextPath}/resources/v${initParam.releaseNumber}/js/active.js"></script>
+        <script type="text/javascript"
+                src="${pageContext.request.contextPath}/resources/v${initParam.releaseNumber}/js/notifications.js"></script>
     </jsp:attribute>
     <jsp:body>
         <section>
@@ -80,7 +83,7 @@
                     <input id="filter-form-submit-button" type="submit" value="Apply"/>
                 </form>
             </s:filter-flyout-widget>
-            <h2 id="page-header-title"><c:out value="${title}"/><span class="status" id="alarm-count"><a id="list-active-link" href="${pageContext.request.contextPath}/notifications?state=Active&alwaysIncludeUnregistered=Y&alwaysIncludeUnfilterable=Y${locationFilterStr}">0</a></span><span class="status" id="loading"><span class="button-indicator"></span> Loading...</span></h2>
+            <h2 id="page-header-title"><c:out value="${title}"/><span class="status" id="alarm-count"><a id="list-active-link" class="dialog-ready" data-dialog-title="Notification Snapshot" href="${pageContext.request.contextPath}/notifications?state=Active&alwaysIncludeUnregistered=Y&alwaysIncludeUnfilterable=Y${locationFilterStr}">0</a></span><span class="status" id="loading"><span class="button-indicator"></span> Loading...</span></h2>
             <div id="liveness-heartbeat">Liveness: <span id="liveness-ts">None</span></div>
             <span id="info-counts">
                 (<span><a href="${pageContext.request.contextPath}/notifications?override=Latched&override=OffDelayed${locationFilterStr}"><span id="incited-count">-</span></a> Incited</span>)
@@ -93,36 +96,17 @@
                 <img draggable="false" alt="site" src="${pageContext.request.contextPath}/resources/v${initParam.releaseNumber}/img/site.png"/>
                 <div id="system-grid">
                     <c:forEach items="${systemList}" var="system">
-                        <div id="system-count-${system.systemId}"><span class="system-status system-count"><a href="${pageContext.request.contextPath}/notifications?state=Active&systemName=${system.name}${locationFilterStr}">0</a></span> <c:out value="${system.name}"/></div>
+                        <div id="system-count-${system.systemId}"><span class="system-status system-count"><a class="dialog-ready2" data-dialog-title="Notification Snapshot" href="${pageContext.request.contextPath}/notifications?state=Active&systemName=${system.name}${locationFilterStr}">0</a></span> <c:out value="${system.name}"/></div>
                     </c:forEach>
                 </div>
                 <c:forEach items="${locationList}" var="location">
-                    <span class="location-status" id="location-count-${location.locationId}"><a href="${pageContext.request.contextPath}/notifications?state=Active&locationId=${location.locationId}">0</a></span>
+                    <span class="location-status" id="location-count-${location.locationId}"><a class="dialog-ready" data-dialog-title="Notification Snapshot" href="${pageContext.request.contextPath}/notifications?state=Active&locationId=${location.locationId}">0</a></span>
                 </c:forEach>
             </div>
             <span id="link-bar">
-                <span id="unregistered" class="initially-none"><a href="${pageContext.request.contextPath}/notifications?state=Active&registered=N"><span class="special-count" id="unregistered-count"></span></a> Unregistered</span>
-                <span id="unfilterable" class="initially-none"><a href="${pageContext.request.contextPath}/notifications?state=Active&filterable=N"><span class="special-count" id="unfilterable-count"></span></a> Unfilterable</span>
+                <span id="unregistered" class="initially-none"><a class="dialog-ready" data-dialog-title="Notification Snapshot" href="${pageContext.request.contextPath}/notifications?state=Active&registered=N"><span class="special-count" id="unregistered-count"></span></a> Unregistered</span>
+                <span id="unfilterable" class="initially-none"><a class="dialog-ready" data-dialog-title="Notification Snapshot" href="${pageContext.request.contextPath}/notifications?state=Active&filterable=N"><span class="special-count" id="unfilterable-count"></span></a> Unfilterable</span>
             </span>
         </section>
-        <div id="all-dialog" class="dialog" title="Active Alarms">
-            <table id="alarm-table" class="data-table">
-                <thead>
-                <tr>
-                    <th>name</th>
-                    <th>priority</th>
-                    <th>state</th>
-                    <th>type</th>
-                    <th>error</th>
-                    <th>stat</th>
-                    <th>sevr</th>
-                    <th>epicspv</th>
-                    <th>location</th>
-                </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </div>
     </jsp:body>
 </t:page>
