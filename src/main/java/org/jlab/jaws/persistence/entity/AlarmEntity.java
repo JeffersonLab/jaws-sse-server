@@ -9,6 +9,7 @@ import java.util.Objects;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import org.hibernate.envers.AuditJoinTable;
 import org.hibernate.envers.Audited;
 import org.hibernate.envers.RelationTargetAuditMode;
 
@@ -38,12 +39,12 @@ public class AlarmEntity implements Serializable {
   @ManyToOne(optional = false)
   private Action action;
 
-  @ManyToMany(fetch = FetchType.EAGER)
+  @OneToMany(fetch = FetchType.EAGER)
   @JoinTable(
       name = "ALARM_LOCATION",
       joinColumns = @JoinColumn(name = "ALARM_ID"),
       inverseJoinColumns = @JoinColumn(name = "LOCATION_ID"))
-  @Audited(targetAuditMode = RelationTargetAuditMode.NOT_AUDITED)
+  @AuditJoinTable(name = "ALARM_LOCATION_AUD")
   private List<Location> locationList;
 
   @Size(max = 64)
