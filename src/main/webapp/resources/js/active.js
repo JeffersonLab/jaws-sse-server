@@ -1,6 +1,11 @@
 const urlObject = new URL(self.location);
 const contextPath = '/' + urlObject.pathname.split('/')[1];
 
+jlab.pageDialog.width = 1200
+jlab.pageDialog.height = 900
+jlab.pageDialog.minWidth = 400
+jlab.pageDialog.minHeight = 300
+
 const activeByLocation = new Map();
 const activeBySystem = new Map();
 const activeByName = new Map();
@@ -130,9 +135,7 @@ evtSource.onerror = (err) => {
     console.error("EventSource failed:", err);
 };
 
-let table = document.getElementById("alarm-table"),
-    tbody = table.querySelector("tbody"),
-    alarmCountSpan = document.getElementById("alarm-count"),
+let alarmCountSpan = document.getElementById("alarm-count"),
     unregisteredCountSpan = document.getElementById("unregistered-count"),
     unregisteredSpan = document.getElementById("unregistered"),
     unfilterableCountSpan = document.getElementById("unfilterable-count"),
@@ -443,3 +446,33 @@ $(function() {
         templateSelection: formatLocation
     });
 });
+$(document).on("click", ".dialog-ready2", function () {
+    var title = $(this).attr("data-dialog-title");
+
+    jlab.closePageDialogs2();
+    jlab.openPageInDialog2($(this).attr("href"), title);
+    return false;
+});
+jlab.pageLoadFunc = function() {
+    $(".page-dialog").find(".filter-flyout-ribbon").removeClass("filter-flyout-ribbon");
+
+};
+jlab.openPageInDialog2 = function (href, title) {
+    $("<div class=\"page-dialog\"></div>")
+        .load(href + ' .dialog-content', jlab.pageLoadFunc)
+        .dialog({
+            autoOpen: true,
+            title: title,
+            width: jlab.pageDialog.width,
+            height: jlab.pageDialog.height,
+            minWidth: jlab.pageDialog.minWidth,
+            minHeight: jlab.pageDialog.minHeight,
+            resizable: jlab.pageDialog.resizable,
+            close: function () {
+                $(this).dialog('destroy').remove();
+            }
+        });
+};
+jlab.closePageDialogs2 = function () {
+    $(".page-dialog").dialog('destroy').remove();
+};
