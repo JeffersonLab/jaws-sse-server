@@ -42,7 +42,7 @@
                     <input id="filter-form-submit-button" type="submit" value="Apply"/>
                 </form>
             </s:filter-flyout-widget>
-            <h2 id="page-header-title">Inventory Activity: Sync Rule <c:out value="${param.syncRuleId}"/></h2>
+            <h2 class="page-header-title">Inventory Activity: Sync Rule <c:out value="${param.syncRuleId}"/></h2>
             <ul class="bracket-horizontal-nav">
                 <li><a href="${pageContext.request.contextPath}/reports/inventory-history">Transactions</a>&nbsp;</li>
                 <li><a href="${pageContext.request.contextPath}/reports/inventory-history/alarm">Alarm</a>&nbsp;</li>

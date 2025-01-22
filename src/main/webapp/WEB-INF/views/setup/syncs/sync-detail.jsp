@@ -22,7 +22,7 @@
                     <span>Sync Rules</span>
                 </li>
                 <li>
-                    <h2 id="page-header-title"><c:out value="${param.syncRuleId}"/></h2>
+                    <h2 class="page-header-title"><c:out value="${param.syncRuleId}"/></h2>
                 </li>
             </ul>
         </div>

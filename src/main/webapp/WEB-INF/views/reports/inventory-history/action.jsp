@@ -41,7 +41,7 @@
                     <input id="filter-form-submit-button" type="submit" value="Apply"/>
                 </form>
             </s:filter-flyout-widget>
-            <h2 id="page-header-title">Inventory History: Action <c:out value="${param.actionId}"/></h2>
+            <h2 class="page-header-title">Inventory History: Action <c:out value="${param.actionId}"/></h2>
             <ul class="bracket-horizontal-nav">
                 <li><a href="${pageContext.request.contextPath}/reports/inventory-history">Transactions</a>&nbsp;</li>
                 <li>

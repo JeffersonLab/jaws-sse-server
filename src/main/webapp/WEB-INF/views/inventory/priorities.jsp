@@ -12,7 +12,7 @@
     </jsp:attribute>        
     <jsp:body>
         <section>                              
-            <h2 id="page-header-title"><c:out value="${title}"/></h2>
+            <h2 class="page-header-title"><c:out value="${title}"/></h2>
             <div class="message-box"></div>
             <div id="chart-wrap" class="chart-wrap-backdrop">
                 <table class="data-table outer-table">

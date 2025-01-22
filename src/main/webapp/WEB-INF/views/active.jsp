@@ -80,13 +80,13 @@
                     <input id="filter-form-submit-button" type="submit" value="Apply"/>
                 </form>
             </s:filter-flyout-widget>
-            <h2 id="page-header-title"><c:out value="${title}"/><span class="status" id="alarm-count"><a id="list-active-link" href="${pageContext.request.contextPath}/notifications?state=Active&alwaysIncludeUnregistered=Y&alwaysIncludeUnfilterable=Y${locationFilterStr}">0</a></span><span class="status" id="loading"><span class="button-indicator"></span> Loading...</span></h2>
+            <h2 class="page-header-title"><c:out value="${title}"/><span class="status" id="alarm-count"><a id="list-active-link" href="${pageContext.request.contextPath}/notifications?state=Active&alwaysIncludeUnregistered=Y&alwaysIncludeUnfilterable=Y${locationFilterStr}">0</a></span><span class="status" id="loading"><span class="button-indicator"></span> Loading...</span></h2>
             <div id="liveness-heartbeat">Liveness: <span id="liveness-ts">None</span></div>
             <span id="info-counts">
                 (<span><a href="${pageContext.request.contextPath}/notifications?override=Latched&override=OffDelayed${locationFilterStr}"><span id="incited-count">-</span></a> Incited</span>)
                 | <span><a href="${pageContext.request.contextPath}/notifications?state=Normal${locationFilterStr}"><span id="normal-count">-</span></a> Normal</span>
                 (<span><a href="${pageContext.request.contextPath}/notifications?override=Disabled&override=Shelved&override=Masked&override=OnDelayed&override=Filtered${locationFilterStr}"><span id="suppressed-count">-</span></a> Suppressed</span>)
-                | <span><a href="${pageContext.request.contextPath}/notifications${rootLocationFilterStr}"><span id="all-count">-</span></a> Alarms</span>
+                | <span><a class="dialog-opener" href="${pageContext.request.contextPath}/notifications${rootLocationFilterStr}"><span id="all-count">-</span></a> Alarms</span>
             </span>
             <div class="message-box"><c:out value="${selectionMessage}"/></div>
             <div id="diagram-container">

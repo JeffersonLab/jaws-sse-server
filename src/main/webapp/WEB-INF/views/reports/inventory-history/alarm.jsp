@@ -42,7 +42,7 @@
                     <input id="filter-form-submit-button" type="submit" value="Apply"/>
                 </form>
             </s:filter-flyout-widget>
-            <h2 id="page-header-title">Inventory Activity: Alarm <c:out value="${param.alarmId}"/></h2>
+            <h2 class="page-header-title">Inventory Activity: Alarm <c:out value="${param.alarmId}"/></h2>
             <ul class="bracket-horizontal-nav">
                 <li><a href="${pageContext.request.contextPath}/reports/inventory-history">Transactions</a>&nbsp;</li>
                 <li>Alarm&nbsp;</li>

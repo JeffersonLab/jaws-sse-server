@@ -15,7 +15,7 @@ jlab.initMarkdownWidgets = function() {
 jlab.doneLoading = function() {
     jlab.initMarkdownWidgets();
 };
-jlab.openPageInDialog = function (href, title) {
+/*jlab.openPageInDialog = function (href, title) {
     $("<div class=\"page-dialog\"></div>")
         .load(href + ' .dialog-content', jlab.doneLoading)
         .dialog({
@@ -31,7 +31,7 @@ jlab.openPageInDialog = function (href, title) {
                 $(this).dialog('destroy').remove();
             }
         });
-};
+};*/
 $(function () {
     jlab.initMarkdownWidgets();
 });

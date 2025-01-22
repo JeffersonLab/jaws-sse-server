@@ -20,7 +20,7 @@
                     <span>Alarms</span>
                 </li>
                 <li>
-                    <h2 id="page-header-title"><c:out value="${param.name}"/></h2>
+                    <h2 class="page-header-title"><c:out value="${param.name}"/></h2>
                 </li>
             </ul>
         </div>
